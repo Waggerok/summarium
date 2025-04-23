@@ -1,5 +1,9 @@
 {
   "expo": {
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["ts", "tsx", "js", "jsx", "svg"]
+    },
     "name": "summarium",
     "slug": "summarium",
     "version": "1.0.0",
