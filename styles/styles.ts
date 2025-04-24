@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { colors } from './colors';
 
-export const commonStyles = StyleSheet.create({
+const commonStyles = StyleSheet.create({
   container: {
     padding: 20,
     justifyContent: 'center',
@@ -13,12 +12,6 @@ export const commonStyles = StyleSheet.create({
     zIndex: -1,
     width: '100%',
     height: '100%',
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    color: '#000',
-    height: '100%'
   },
   formAuth: {
     flexDirection: 'column',
@@ -39,12 +32,6 @@ export const commonStyles = StyleSheet.create({
     backgroundColor: '#fff',
     height: 48
   },
-  button: {
-    backgroundColor: colors.primary,
-    padding: 10,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 48
-  }
 }); 
+
+export default commonStyles;

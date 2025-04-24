@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, Button } from "react-native";
-import { commonStyles } from '../styles/styles';
+import { commonStyles } from '@/styles';
 import AuthForm from '@/components/authForm';
 
 export default function Index() {

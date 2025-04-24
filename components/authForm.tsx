@@ -1,11 +1,16 @@
-import { commonStyles } from '@/styles/styles';
+//React imports
 import * as React from 'react';
+import { useState } from 'react';
+
+//UI imports
+import { Button } from './UI/button';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { View, Text } from 'react-native';
 import Input from './UI/input';
-import { useState } from 'react';
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { Feather } from '@expo/vector-icons';
-import { Button } from './UI/button';
+
+//Style imports
+import { commonStyles, componentsStyles } from '@/styles';
 
 
 const authForm = () => {
@@ -44,7 +49,7 @@ const authForm = () => {
                 />
             </View>
 
-            <Button text='Войти' onPress={handleLogin} style={commonStyles.button}/>
+            <Button text='Войти' onPress={handleLogin} style={componentsStyles.button}/>
 
         </View>
     )
