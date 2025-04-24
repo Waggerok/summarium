@@ -17,7 +17,6 @@ const commonStyles = StyleSheet.create({
     flexDirection: 'column',
     gap: 20,
     width: '100%',
-    backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
   },

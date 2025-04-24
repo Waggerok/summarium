@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import colors from "./colors";
 
+
 const componentsStyles = StyleSheet.create({
     input: {
         flex: 1,

@@ -1,16 +1,18 @@
 //React imports
 import * as React from 'react';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
 
 //UI imports
-import { Button } from './UI/button';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { View, Text } from 'react-native';
+import { Button } from './UI/button';
 import Input from './UI/input';
+import { View, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 //Style imports
 import { commonStyles, componentsStyles } from '@/styles';
+import { useTheme } from '@/hooks';
 
 
 const authForm = () => {
@@ -18,19 +20,23 @@ const authForm = () => {
     const [email,setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    const theme = useTheme();
+    const router = useRouter();
+
     const handleLogin = () => {
         console.log(email,password);
+        router.push('/upload')
     }
     return (
-        <View style={commonStyles.formAuth}>
+        <View style={[commonStyles.formAuth, {backgroundColor: theme.bg}]}>
             
             <View>
-                <Text className='text-2xl font-bold text-center'>Авторизация</Text>
+                <Text className='text-2xl font-bold text-center' style={{color: theme.mainText}}>Авторизация</Text>
                 <Text className='text-sm text-center text-gray-500'>Введите свои данные для входа</Text>
             </View>      
         
             <View>
-                <Text className='mb-1'>Email</Text>
+                <Text className='mb-1' style={{color: theme.secondaryText}}>Email</Text>
                 <Input
                     placeholder='Email'
                     icon={<AntDesign name='user' size={18}/>} 
@@ -40,7 +46,7 @@ const authForm = () => {
             </View>
 
             <View>
-                <Text className='mb-1'>Пароль</Text>
+                <Text className='mb-1' style={{color: theme.secondaryText}}>Пароль</Text>
                 <Input 
                     placeholder='Пароль' 
                     icon={<Feather name='lock' size={18}/>}
@@ -49,7 +55,11 @@ const authForm = () => {
                 />
             </View>
 
-            <Button text='Войти' onPress={handleLogin} style={componentsStyles.button}/>
+            <Button
+                text='Войти'
+                onPress={handleLogin}
+                style={[componentsStyles.button, {backgroundColor: theme.primary}]}
+            />
 
         </View>
     )
