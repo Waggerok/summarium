@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Image, Pressable } from "react-native";
 import { commonStyles } from '@/styles';
 import AuthForm from '@/components/authForm';
@@ -7,11 +7,10 @@ import Fontisto from '@expo/vector-icons/Fontisto';
 import { useTheme } from '@/hooks/useTheme';
 import { useUIStore } from '@/store/store';
 
-
 export default function Index() {
   
   const {theme, toggleTheme} = useUIStore((state) => state);
-
+  
   return (
     <>
       <View style={commonStyles.container}>

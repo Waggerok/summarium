@@ -1,7 +1,9 @@
 //React imports
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'expo-router';
+import { useTheme } from '@/hooks';
+import Api from '@/Api';
 
 //UI imports
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -12,7 +14,7 @@ import { Feather } from '@expo/vector-icons';
 
 //Style imports
 import { commonStyles, componentsStyles } from '@/styles';
-import { useTheme } from '@/hooks';
+
 
 
 const authForm = () => {
@@ -23,8 +25,11 @@ const authForm = () => {
     const theme = useTheme();
     const router = useRouter();
 
-    const handleLogin = () => {
-        console.log(email,password);
+    const handleLogin = async () => {
+        const res = await Api.AuthorizationApi.loginForAccessTokenApiAuthLoginPost(
+            'Android', email, password
+        )
+
         router.push('/upload')
     }
     return (
