@@ -57,6 +57,7 @@ const authForm = () => {
                     icon={<Feather name='lock' size={18}/>}
                     value={password} 
                     onChangeText={setPassword}
+                    isPassword
                 />
             </View>
 
