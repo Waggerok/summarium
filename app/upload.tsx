@@ -1,12 +1,17 @@
-import * as React from 'react';
-import { Text } from 'react-native';
+import UploadComponent from "@/components/uploadComponent";
+import { useTheme } from "@/hooks";
+import { commonStyles } from "@/styles";
+import { View } from "react-native";
 
 
 const Upload = () => {
+
+    const theme = useTheme()
+
     return (
-        <>
-            <Text>Hello</Text>        
-        </>
+        <View style={[commonStyles.container, {backgroundColor: theme.bg}]}>
+            <UploadComponent/>
+        </View>
     );
 };
 

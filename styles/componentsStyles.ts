@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import colors from "./colors";
 
 
 const componentsStyles = StyleSheet.create({
@@ -10,7 +9,6 @@ const componentsStyles = StyleSheet.create({
         height: '100%'
     },
     button: {
-        backgroundColor: colors.primary,
         padding: 10,
         borderRadius: 10,
         justifyContent: 'center',

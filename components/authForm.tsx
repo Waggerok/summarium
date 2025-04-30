@@ -26,11 +26,16 @@ const authForm = () => {
     const router = useRouter();
 
     const handleLogin = async () => {
-        const res = await Api.AuthorizationApi.loginForAccessTokenApiAuthLoginPost(
-            'Android', email, password
-        )
-
-        router.push('/upload')
+        try {
+            const res = await Api.AuthorizationApi.loginForAccessTokenApiAuthLoginPost(
+                'Android', email, password
+            )
+            router.push('/upload');
+        }
+        catch(e) {
+            console.error('Ошибка при входе', e);
+        }
+        
     }
     return (
         <View style={[commonStyles.formAuth, {backgroundColor: theme.bg}]}>
