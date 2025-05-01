@@ -1,9 +1,15 @@
-import { PressableProps, Text, Pressable } from "react-native"
+import { PressableProps, Text, Pressable, StyleProp, TextStyle } from "react-native"
 
-export function Button({ text, ...props }: PressableProps & {text: string}) {
+type ButtonProps = PressableProps & {
+    text: string,
+    textStyle?: StyleProp<TextStyle>
+}
+
+export function Button({ text, textStyle, ...props }: ButtonProps) {
+
     return (
         <Pressable {...props}>
-            <Text className="text-white">{text}</Text>
+            <Text style={textStyle}>{text}</Text>
         </Pressable>
     )
 }

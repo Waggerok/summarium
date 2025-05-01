@@ -1,7 +1,7 @@
 const lightTheme = {
     bg: '#fff',
     primary: '#05227C',
-    stroke: '#С6CEDF',
+    stroke: '#C6CEDF',
     selected: '#EEF2FD',
     mainText: '#1C202B',
     secondaryText: '#5E6574',

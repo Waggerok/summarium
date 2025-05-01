@@ -13,7 +13,7 @@ const componentsStyles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        height: 48
+        height: 48,
     }
 }) 
 

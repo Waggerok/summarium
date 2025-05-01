@@ -70,6 +70,7 @@ const authForm = () => {
                 text='Войти'
                 onPress={handleLogin}
                 style={[componentsStyles.button, {backgroundColor: theme.primary}]}
+                textStyle={{color: 'white'}}
             />
 
         </View>
