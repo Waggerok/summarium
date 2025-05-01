@@ -11,7 +11,7 @@ const lightTheme = {
 const darkTheme = {
     bg: '#14181F',
     primary: '#355AEC',
-    stroke: '#3A4465',
+    stroke: '#323644',
     selected: '#101F55',
     mainText: '#EDEEF1',
     secondaryText: '#AEB4C1',
