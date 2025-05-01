@@ -1,6 +1,6 @@
 //React imports
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/hooks';
 import Api from '@/Api';

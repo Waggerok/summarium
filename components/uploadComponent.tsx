@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { Button } from './UI/button';
-import { commonStyles, componentsStyles } from '@/styles';
+import { componentsStyles } from '@/styles';
 import { useTheme } from '@/hooks';
 
 const uploadComponent = () => {
