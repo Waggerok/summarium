@@ -2,7 +2,14 @@
   "expo": {
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["ts", "tsx", "js", "jsx", "svg"]
+      "sdkVersion": "53.0.0",
+      "sourceExts": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "svg"
+      ]
     },
     "name": "summarium",
     "slug": "summarium",
@@ -36,7 +43,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true

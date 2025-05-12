@@ -4,13 +4,21 @@ import { View, Text } from 'react-native';
 import { Button } from './UI/button';
 import { componentsStyles } from '@/styles';
 import { useTheme } from '@/hooks';
+import * as DocumentPicker from 'expo-document-picker'
 
 const uploadComponent = () => {
 
     const theme = useTheme()
 
-    const uploadFile = () => {
-        console.log('pressed');
+    const uploadFile = async() => {
+        try {
+            const result = await DocumentPicker.getDocumentAsync({});
+            console.log('File Selected', result);
+        }
+        catch (error) {
+            console.log('Error picking file', error);
+        }
+
     }
 
     return (
