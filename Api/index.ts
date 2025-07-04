@@ -8,19 +8,14 @@ const basePath = process.env.EXPO_PUBLIC_API_URL || '';
 const commonParams = [undefined, basePath, axiosInstance] as const;
 
 axiosInstance.interceptors.request.use(
-    (config) =>
-    {
-        const accessToken = AsyncStorage.getItem('AccessToken');
-        if (accessToken)
-        {
+    async (config) => {
+        const accessToken = await AsyncStorage.getItem('AccessToken');
+        if (accessToken) {
             config.headers['Authorization'] = `Bearer ${accessToken}`;
         }
         return config;
     },
-    (error) =>
-    {
-        return Promise.reject(error);
-    },
+    (error) => Promise.reject(error)
 );
 
 axiosInstance.interceptors.response.use(

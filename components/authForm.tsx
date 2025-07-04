@@ -14,6 +14,7 @@ import { Feather } from '@expo/vector-icons';
 
 //Style imports
 import { commonStyles, componentsStyles } from '@/styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -29,14 +30,17 @@ const authForm = () => {
         try {
             const res = await Api.AuthorizationApi.loginForAccessTokenApiAuthLoginPost(
                 'Android', email, password
-            )
+            );
+            // Сохраняем токен
+            await AsyncStorage.setItem('AccessToken', res.data.access_token);
             router.push('/upload');
         }
         catch(e) {
             console.error('Ошибка при входе', e);
         }
-        
     }
+        
+    
     return (
         <View style={[commonStyles.formAuth, {backgroundColor: theme.bg}]}>
             
