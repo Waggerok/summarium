@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import * as React from 'react';
 import { useState, useRef } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import { Button } from './UI/button';
 import { componentsStyles } from '@/styles';
 import { useTheme } from '@/hooks';
@@ -123,6 +123,11 @@ const uploadComponent = () => {
         });
     };
 
+    // Функция для удаления HTML-тегов
+    const stripHtml = (html: string) => {
+        return html.replace(/<[^>]+>/g, '');
+    };
+
     return (
         <View className={`border shadow-sm h-[30%] w-full rounded-lg p-4`} style={{backgroundColor: theme.bg, borderColor: theme.stroke}}>
             <View className='border-2 border-dashed w-full h-full rounded-lg flex flex-col justify-center items-center space-y-4' style={{borderColor: theme.stroke}}>
@@ -180,9 +185,11 @@ const uploadComponent = () => {
             </View>
             {/* Выводим только суммаризацию после завершения */}
             {status === 'done' && summaryText ? (
-                <View style={{marginTop: 24, padding: 16, backgroundColor: theme.bg, borderRadius: 8, borderWidth: 1, borderColor: theme.stroke}}>
+                <View style={{marginTop: 24, padding: 16, backgroundColor: theme.bg, borderRadius: 8, borderWidth: 1, borderColor: theme.stroke, maxHeight: 250}}>
                     <Text style={{fontWeight: 'bold', color: theme.mainText, marginBottom: 8}}>Суммаризация:</Text>
-                    <Text style={{color: theme.secondaryText, fontSize: 13, lineHeight: 18}} selectable>{summaryText}</Text>
+                    <ScrollView style={{maxHeight: 200}}>
+                        <Text style={{color: theme.secondaryText, fontSize: 13, lineHeight: 18}} selectable>{stripHtml(summaryText)}</Text>
+                    </ScrollView>
                 </View>
             ) : null}
         </View>
