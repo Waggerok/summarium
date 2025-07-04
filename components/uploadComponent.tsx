@@ -19,17 +19,14 @@ const uploadComponent = () => {
     const [progress, setProgress] = useState<number>(0);
     const startTimeRef = useRef<number | null>(null);
 
-    // Фейковый прогресс (как в web)
     const getFakeProgress = (phase: 'transcribing' | 'summarizing', start: number | null) => {
         if (!start) return 0;
         const now = Date.now();
         const elapsed = now - start;
-        // Фейковые значения: транскрибация 10 сек, суммаризация 7 сек
         const total = phase === 'transcribing' ? 10000 : 7000;
         return Math.min(100, Math.floor((elapsed / total) * 100));
     };
 
-    // Основной процесс: транскрибация -> суммаризация -> показать summary
     const handleSummarize = async () => {
         if (!file) return;
         setError(null);
@@ -38,28 +35,23 @@ const uploadComponent = () => {
         setProgress(0);
         startTimeRef.current = Date.now();
         try {
-            // 1. Загрузка файла
             const uploadRes = await Api.UploadsApi.uploadFileApiUploadsUploadFilePost(file);
             const project_id = uploadRes.data.project_id;
             setProjectId(project_id);
-            // 2. Создание задачи транскрибации
             await Api.ProjectsApi.createTaskApiProjectCreateTaskPost({
                 project_id,
                 task_type: TaskType.Transcribation,
                 params: {},
             });
-            // 3. Polling транскрибации
             await pollForTranscription(project_id);
             setStatus('summarizing');
             setProgress(0);
             startTimeRef.current = Date.now();
-            // 4. Создание задачи суммаризации
             await Api.ProjectsApi.createTaskApiProjectCreateTaskPost({
                 project_id,
                 task_type: TaskType.Summarization,
                 params: { template: SummarizationTemplateType.Report },
             });
-            // 5. Polling суммаризации
             await pollForSummarization(project_id);
             setStatus('done');
             setProgress(100);
@@ -74,7 +66,6 @@ const uploadComponent = () => {
         }
     };
 
-    // Polling транскрибации
     const pollForTranscription = async (project_id: string) => {
         return new Promise<void>((resolve, reject) => {
             const interval = setInterval(async () => {
@@ -98,7 +89,6 @@ const uploadComponent = () => {
         });
     };
 
-    // Polling суммаризации
     const pollForSummarization = async (project_id: string) => {
         return new Promise<void>((resolve, reject) => {
             const interval = setInterval(async () => {
@@ -123,14 +113,12 @@ const uploadComponent = () => {
         });
     };
 
-    // Функция для удаления HTML-тегов
     const stripHtml = (html: string) => {
         return html.replace(/<[^>]+>/g, '');
     };
 
     return (
         <View style={{flex: 1, width: '100%', backgroundColor: theme.bg, padding: 0}}>
-            {/* Виджет загрузки файла сверху */}
             <View
                 className='border shadow-sm rounded-lg'
                 style={{
@@ -207,7 +195,6 @@ const uploadComponent = () => {
                     />
                 </View>
             </View>
-            {/* Суммаризация занимает всё оставшееся пространство */}
             <View style={{flex: 1, marginTop: 24, marginHorizontal: 16, marginBottom: 24}}>
                 {status === 'done' && summaryText ? (
                     <View style={{flex: 1, backgroundColor: theme.bg, borderRadius: 8, borderWidth: 1, borderColor: theme.stroke, padding: 16, maxHeight: '100%'}}>
